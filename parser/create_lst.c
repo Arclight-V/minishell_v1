@@ -6,11 +6,37 @@
 /*   By: anatashi <anatashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 16:31:44 by skarry            #+#    #+#             */
-/*   Updated: 2020/12/01 22:38:18 by anatashi         ###   ########.fr       */
+/*   Updated: 2020/12/01 22:41:27 by anatashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+int				check_env(char	**envp, char *var, int size)
+{
+	int			i;
+	int			j;
+	int			recover_size;
+
+	recover_size = size;
+	i = -1;
+	while (envp[++i])
+	{
+		j = 0;
+		if (envp[i][j] == var[j])
+		{
+			size = recover_size;
+			while (envp[i][j] == var[j] && size)
+			{	
+				if ((envp[i][j + 1] == '=' || envp[i][j + 1] == '\0') && size == 1)
+					return (i);
+				j++;
+				size--;
+			}
+		}
+	}
+	return (0);
+}
 
 char		*ft_strjoin_gnl(char **s1, char *s2)
 {
