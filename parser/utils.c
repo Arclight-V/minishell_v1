@@ -35,6 +35,7 @@ void		find_end_cmd(char *s, size_t *i, char **line2, int *dquote)
 	while (s[*i] != '|' && s[*i] != ';' && s[*i] != '<' && s[*i] != '>' && s[*i])
 	{
 		*line2[j++] = s[(*i)++];
+		ft_putchar_fd(*line2[j], 0);
 		if (s[*i] == '\"')
 			(*dquote) = 1;
 	}

@@ -154,7 +154,7 @@ void		write_data(t_commands *s_point, size_t *point,
 	end_cmd = 0;
 	dquote = 0;
 	*point += skip_space(line + *point);
-	line2 = (char *)malloc(ft_strlen(line) - end_cmd - *point);
+	line2 = (char *)malloc(sizeof(char) * (ft_strlen(line) - end_cmd - *point));
 	end_cmd += *point;
 	find_end_cmd(line + *point, &end_cmd, &line2, &dquote);
 	if (dquote)
