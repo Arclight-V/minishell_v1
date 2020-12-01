@@ -6,7 +6,7 @@
 /*   By: anatashi <anatashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 12:39:16 by anatashi          #+#    #+#             */
-/*   Updated: 2020/12/01 18:23:55 by anatashi         ###   ########.fr       */
+/*   Updated: 2020/12/01 18:24:38 by anatashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_echo(t_commands *cmd);
 *В функцию должны подаваться уже готовые аргументы.
 */
 
-void	ft_export(t_commands **cmd, t_data **all, int index)
+void	ft_export(t_commands **cmd, t_data **all, int index);
 void		ft_check_cmd_in_path(t_commands **cmd, t_data **data);
 void	ft_unset(t_commands **cmd, t_data **all);
 

@@ -6,21 +6,13 @@
 /*   By: anatashi <anatashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 14:32:07 by anatashi          #+#    #+#             */
-/*   Updated: 2020/11/25 18:51:20 by anatashi         ###   ########.fr       */
+/*   Updated: 2020/12/01 19:01:56 by anatashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "lexer.h"
 
-t_tok		*init_tok_list()
-{
-	t_tok 	*new_list;
-
-	if (!(new_list = (t_tok *)ft_calloc(sizeof(t_tok), 1)))
-		error_output(NULL, NULL, MALLOC_1);
-	return (new_list);
-}
 
 int			get_char_type(char *ch_type)
 {
@@ -73,17 +65,6 @@ void 		strip_quotes(char *src, char *dest, size_t n, int j)
 	dest[j] = 0;
 }
 
-void	tok_init(t_tok *tok, int datasize)
-{
-	tok->data = malloc(datasize + 1);
-	tok->data[0] = 0;
-	tok->type = CHAR_NULL;
-	tok->next = NULL;
-}
-
-#if 0
-#endif
-
 void	init_arr(int *arr)
 {
 	arr[0] = -1;
@@ -120,13 +101,18 @@ void	_if_char_general(t_tok **token, int *arr, char c)
 
 void	_if_char_whitespace(t_tok **token, int *arr, int size)
 {
+	char	*free_memory;
+
+	free_memory = (*token)->data;
 	if (arr[1] > 0)
 	{
-		(*token)->data[arr[1]] = 0;
+		(*token)->data[arr[1]] = '\0';
+		free_memory += arr[1] + 1;
+		free(free_memory);
+		free_memory = NULL;
 		(*token)->next = init_tok_list();
 		*token = (*token)->next;
-		(*token)->data = malloc(size - arr[0] + 1);
-		(*token)->data[0] = 0;
+		(*token)->data = (char *)ft_calloc(sizeof(char), size - arr[0] + 1);
 		(*token)->type = CHAR_NULL;
 		arr[1] = 0;
 	}
@@ -267,9 +253,9 @@ int lexer_build(char *input, int size, t_lexer  *lexerbuf)
 	int		arr[6];
 
 	init_arr(arr);
-	lexerbuf->llisttok = init_tok_list();
+	lexerbuf->llisttok = (t_tok *)ft_calloc(sizeof(t_tok), 1);
 	token = lexerbuf->llisttok;
-	tok_init(token, size);
+	token->data = (char *)malloc(size + 1);
 	while (input[++arr[0]] != '\0')
 	{
 		arr[4] = get_char_type(ft_strchr(TOKEN_TYPE, input[arr[0]]));

@@ -6,7 +6,7 @@
 /*   By: anatashi <anatashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 15:00:57 by anatashi          #+#    #+#             */
-/*   Updated: 2020/12/01 18:00:29 by anatashi         ###   ########.fr       */
+/*   Updated: 2020/12/01 18:55:11 by anatashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,13 @@ int    				main(int argc, char **argv, char **envp)
 	char			*line;
 	t_data			*data;
 	t_commands		*syntax_tree;
-	t_lexer			lexerbuf;
+	t_lexer			*lexerbuf;
 	
 	(void)argc;
 	(void)argv;
 	(void)envp;
 	data = init_struct_data();
+	lexerbuf = (t_lexer *)ft_calloc(sizeof(t_lexer), 1);
 	create_env(data, envp);
 	
 	/*
@@ -38,7 +39,7 @@ int    				main(int argc, char **argv, char **envp)
 	// #if 0
 	if (argv[1][0] == '-' && argv[1][1] == 'c')
 	{
-		lexer_build(ft_strdup(argv[2]), ft_strlen(argv[2]), &lexerbuf);
+		lexer_build(ft_strdup(argv[2]), ft_strlen(argv[2]), lexerbuf);
 		syntax_tree = parse(data, &lexerbuf);
 		executor(syntax_tree, data);
 	}
@@ -50,9 +51,9 @@ int    				main(int argc, char **argv, char **envp)
 			print_promt_string();
 			signal(SIGINT,signal_handler);
 			read_cmd(data, &line);
-			lexer_build(line, ft_strlen(line), &lexerbuf);
+			lexer_build(line, ft_strlen(line), lexerbuf);
 			ft_free_tmp(line);
-			syntax_tree = parse(data, &lexerbuf);
+			syntax_tree = parse(data, lexerbuf);
 	
 			
 			/*
