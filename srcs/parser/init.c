@@ -6,11 +6,13 @@
 /*   By: anatashi <anatashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 18:25:17 by anatashi          #+#    #+#             */
-/*   Updated: 2020/12/01 18:16:34 by anatashi         ###   ########.fr       */
+/*   Updated: 2020/12/01 18:20:07 by anatashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
+#include "dirent.h"
+#include <sys/types.h>
 
 static void		init_arg(t_commands *cmd)
 {
