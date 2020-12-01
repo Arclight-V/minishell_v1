@@ -6,7 +6,7 @@
 /*   By: anatashi <anatashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 16:56:06 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/12/01 22:26:41 by anatashi         ###   ########.fr       */
+/*   Updated: 2020/12/01 22:34:24 by anatashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ int		main(int argc, char **argv, char **env)
 	if (argv[1][0] == '-' && argv[1][1] == 'c')
 	{
 		cmd = create_lst(ft_strdup(argv[2]), all);
-		free(line);
-		line = NULL;
 		ft_start(cmd, all);
 		free_cmd(cmd);
 	}
