@@ -1,6 +1,6 @@
 NAME = minishell
 HEADERS = ./parser/parser.h
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -g -Wall -Werror -Wextra
 
 SRC = main.c parser/wait_str.c parser/create_lst.c parser/add_lst.c\
 	parser/split_words1.c parser/free_cmd.c parser/split_words2.c \

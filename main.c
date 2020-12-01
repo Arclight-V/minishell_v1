@@ -6,7 +6,7 @@
 /*   By: anatashi <anatashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 16:56:06 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/12/01 22:34:24 by anatashi         ###   ########.fr       */
+/*   Updated: 2020/12/01 22:54:05 by anatashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ int		main(int argc, char **argv, char **env)
 	ft_creat_env(all, env);
 	signal(SIGINT, ft_signal);
 	signal(SIGQUIT, ft_signal_quit);
-	// #if 0
+	#if 0
 	if (argv[1][0] == '-' && argv[1][1] == 'c')
 	{
 		cmd = create_lst(ft_strdup(argv[2]), all);
 		ft_start(cmd, all);
 		free_cmd(cmd);
 	}
-	// #endif
+	#endif
 	else
 	{	
 	while (1)
