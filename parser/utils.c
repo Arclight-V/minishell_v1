@@ -6,7 +6,7 @@
 /*   By: anatashi <anatashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 13:07:41 by skarry            #+#    #+#             */
-/*   Updated: 2020/12/01 21:37:59 by anatashi         ###   ########.fr       */
+/*   Updated: 2020/12/01 22:48:41 by anatashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,6 @@ int			give_variable(char **env, char *var)
 	return (-1);
 }
 
-static int	if_dubquot(char *s, size_t *i)
-{
-	(*i)++;
-	while (s[*i] && s[*i] != '\"')
-	{
-		if (s[*i] == '\\')
-			(*i)++;
-		if (s[*i])
-			(*i)++;
-	}
-	if (!s[*i])
-		return (*i);
-	return (0);
-}
 
 void		find_end_cmd(char *s, size_t *i, char **line2, int *dquote)
 {
