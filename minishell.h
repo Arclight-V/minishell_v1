@@ -6,7 +6,7 @@
 /*   By: anatashi <anatashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 20:13:18 by skarry            #+#    #+#             */
-/*   Updated: 2020/12/01 22:40:11 by anatashi         ###   ########.fr       */
+/*   Updated: 2020/12/01 22:47:55 by anatashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void					pipe_end(t_commands *pip, t_data *all,
 						int fd0, int fd1);
 int						redirects(t_commands *redir);
 int						ft_str_check_exp(t_data *all, char **env, char *arg);
-void					find_end_cmd(char *s, size_t *end_cmd, char **line2, int dquote);
+void					find_end_cmd(char *s, size_t *end_cmd, char **line2, int *dquote);
 void					record_mas_to_mas(char ***m1, char **m2, int start);
 int						if_basesim(char *line, int i, t_data *all, char **w);
 int						if_dollar(char *line, t_data *all, char **w);
