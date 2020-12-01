@@ -6,7 +6,7 @@
 /*   By: anatashi <anatashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 16:56:06 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/12/01 22:54:05 by anatashi         ###   ########.fr       */
+/*   Updated: 2020/12/01 22:54:31 by anatashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int		main(int argc, char **argv, char **env)
 		ft_start(cmd, all);
 		free_cmd(cmd);
 	}
-	#endif
 	else
+	#endif
 	{	
 	while (1)
 	{
