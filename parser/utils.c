@@ -6,7 +6,7 @@
 /*   By: anatashi <anatashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 13:07:41 by skarry            #+#    #+#             */
-/*   Updated: 2020/12/01 22:48:41 by anatashi         ###   ########.fr       */
+/*   Updated: 2020/12/01 22:52:16 by anatashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int			give_variable(char **env, char *var)
 void		find_end_cmd(char *s, size_t *i, char **line2, int *dquote)
 {
 	size_t	j;
-	char	*free_memory;
 
 	j = 0;
 	while (s[*i] != '|' && s[*i] != ';' && s[*i] != '<' && s[*i] != '>' && s[*i])
@@ -40,11 +39,6 @@ void		find_end_cmd(char *s, size_t *i, char **line2, int *dquote)
 			(*dquote) = 1;
 	}
 	*line2[j + 1] = '\0';
-	if ((free_memory = *line2 + j + 1))
-	{
-		free(free_memory);
-		free_memory = NULL;
-	}
 }
 
 void		record_mas_to_mas(char ***m1, char **m2, int start)
