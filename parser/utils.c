@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anatashi <anatashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 13:07:41 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/28 19:55:55 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/12/01 21:37:59 by anatashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,30 +41,24 @@ static int	if_dubquot(char *s, size_t *i)
 	return (0);
 }
 
-size_t		find_end_cmd(char *s)
+void		find_end_cmd(char *s, size_t *i, char **line2, int *dquote)
 {
-	size_t		i;
+	size_t	j;
+	char	*free_memory;
 
-	i = 0;
-	while (s[i] != '|' && s[i] != ';' && s[i] != '<' && s[i] != '>' && s[i])
+	j = 0;
+	while (s[*i] != '|' && s[*i] != ';' && s[*i] != '<' && s[*i] != '>' && s[*i])
 	{
-		if (s[i] == '\\')
-			i++;
-		if (s[i] == '\'')
-		{
-			i++;
-			while (s[i] && s[i] != '\'')
-				i++;
-			if (!s[i])
-				return (i);
-		}
-		if (s[i] == '\"')
-			if (if_dubquot(s, &i))
-				return (i);
-		if (s[i])
-			i++;
+		*line2[j++] = s[(*i)++];
+		if (s[*i] == '\"')
+			(*dquote) = 1;
 	}
-	return (i);
+	*line2[j + 1] = '\0';
+	if ((free_memory = *line2 + j + 1))
+	{
+		free(free_memory);
+		free_memory = NULL;
+	}
 }
 
 void		record_mas_to_mas(char ***m1, char **m2, int start)

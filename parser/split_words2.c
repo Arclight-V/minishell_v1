@@ -105,15 +105,6 @@ char	*get_word(char **line, int *er, t_data *all)
 	{
 		if (!w)
 			i += skip_space((*line + i));
-		if ((*line)[i] == '\\')
-			if (if_backslash(line, &i, &w, er))
-				break ;
-		if ((*line)[i] == '$')
-			i += if_dollar((*line) + i, all, &w);
-		if ((*line)[i] == '\'')
-			i = if_single_quotes(line, i, &w, er);
-		if ((*line)[i] == '\"')
-			i += if_double_quotes((*line) + i, all, &w, er);
 		if (*er == 1)
 			break ;
 		else
