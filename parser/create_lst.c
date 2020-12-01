@@ -6,11 +6,34 @@
 /*   By: anatashi <anatashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 16:31:44 by skarry            #+#    #+#             */
-/*   Updated: 2020/12/01 22:17:51 by anatashi         ###   ########.fr       */
+/*   Updated: 2020/12/01 22:38:18 by anatashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+char		*ft_strjoin_gnl(char **s1, char *s2)
+{
+	char	*new_str;
+	size_t	j;
+	size_t	i;
+
+	if (!*s1 || !s2)
+		return (NULL);
+	i = 0;
+	j = ft_strlen(*s1) + ft_strlen(s2) + 1;
+	if (!(new_str = (char *)malloc(j * sizeof(char))))
+		return (NULL);
+	j = 0;
+	while ((*s1)[i])
+		new_str[j++] = (*s1)[i++];
+	i = 0;
+	while (s2[i])
+		new_str[j++] = s2[i++];
+	new_str[j] = '\0';
+	free(*s1);
+	return (new_str);
+}
 
 /*
 ** p 	- a pointer to the CHAR_DOLLAR
@@ -43,7 +66,9 @@ void			_if_type_dollar(t_data *data, char **content, char *rem)
 			}
 			else
 			{
-				ft_free_tmp(*content);
+				// ft_free_tmp(*content);
+				free (*content);
+				content = NULL;
 				*content = ft_strdup("");
 			}
 			
