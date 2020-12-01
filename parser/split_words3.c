@@ -6,7 +6,7 @@
 /*   By: anatashi <anatashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 12:20:43 by skarry            #+#    #+#             */
-/*   Updated: 2020/12/01 22:13:51 by anatashi         ###   ########.fr       */
+/*   Updated: 2020/12/01 22:49:47 by anatashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int			if_basesim(char *line, int i, t_data *all, char **w)
 {
+	(void)all;
 	while (line[i] && line[i] != ' ' && line[i] != '\\'
 		&& line[i] != '\'' && line[i] != '\"')
 	{
