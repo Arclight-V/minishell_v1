@@ -6,7 +6,7 @@
 /*   By: anatashi <anatashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 16:31:44 by skarry            #+#    #+#             */
-/*   Updated: 2020/12/01 22:41:27 by anatashi         ###   ########.fr       */
+/*   Updated: 2020/12/01 22:44:06 by anatashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,8 @@ void		write_data(t_commands *s_point, size_t *point,
 	dquote = 0;
 	*point += skip_space(line + *point);
 	line2 = (char *)malloc(ft_strlen(line) - end_cmd - *point);
-	find_end_cmd(line + *point, end_cmd + *point, &line2, dquote);
+	end_cmd += *point;
+	find_end_cmd(line + *point, &end_cmd, &line2, dquote);
 	if (dquote)
 		_if_type_dollar(all, &line2, NULL);
 	_strip_quotes(line2, ft_strlen(line2), 0);
