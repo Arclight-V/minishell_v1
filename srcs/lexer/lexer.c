@@ -6,7 +6,7 @@
 /*   By: anatashi <anatashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 14:32:07 by anatashi          #+#    #+#             */
-/*   Updated: 2020/11/25 18:51:20 by anatashi         ###   ########.fr       */
+/*   Updated: 2020/12/01 20:24:44 by anatashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,6 @@ void 		strip_quotes(char *src, char *dest, size_t n, int j)
 	dest[j] = 0;
 }
 
-void	tok_init(t_tok *tok, int datasize)
-{
-	tok->data = malloc(datasize + 1);
-	tok->data[0] = 0;
-	tok->type = CHAR_NULL;
-	tok->next = NULL;
-}
 
 #if 0
 #endif
@@ -261,15 +254,16 @@ void strip_quotes_in_lst(t_tok **token, int *arr)
 ** arr[5] - k - count
 */
 
+
 int lexer_build(char *input, int size, t_lexer  *lexerbuf)
 {
 	t_tok 	*token;
 	int		arr[6];
 
 	init_arr(arr);
-	lexerbuf->llisttok = init_tok_list();
+	lexerbuf->llisttok = (t_tok *)ft_calloc(sizeof(t_tok), 1);
 	token = lexerbuf->llisttok;
-	tok_init(token, size);
+	token->data = (char *)malloc(size + 1);	
 	while (input[++arr[0]] != '\0')
 	{
 		arr[4] = get_char_type(ft_strchr(TOKEN_TYPE, input[arr[0]]));
